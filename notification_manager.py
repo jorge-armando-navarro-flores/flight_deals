@@ -8,7 +8,7 @@ TWILIO_TOKEN = os.environ.get("TWILIO_TOKEN")
 
 class NotificationManager:
 
-    def send_SMS(self, message):
+    def send_sms(self, message):
         client = Client(TWILIO_SID, TWILIO_TOKEN)
 
         message = client.messages \
