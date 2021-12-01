@@ -48,3 +48,4 @@ for destination_code in destinations:
         #######################
 
         notification_manager.send_sms(message)
+        notification_manager.send_emails(message)

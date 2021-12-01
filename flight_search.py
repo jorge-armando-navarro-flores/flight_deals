@@ -1,7 +1,6 @@
 import os
 import requests
 from flight_data import FlightData
-from pprint import pprint
 TEQUILA_ENDPOINT = "https://tequila-api.kiwi.com"
 
 
