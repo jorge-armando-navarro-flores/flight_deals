@@ -36,7 +36,7 @@ class FlightSearch:
             "flight_type": "round",
             "one_for_city": 1,
             "max_stopovers": 0,
-            "curr": "GBP"
+            "curr": "USD"
         }
 
         response = requests.get(
@@ -47,7 +47,6 @@ class FlightSearch:
 
         try:
             data = response.json()["data"][0]
-            pprint(data)
         except IndexError:
 
             ##########################

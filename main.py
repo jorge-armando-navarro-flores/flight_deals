@@ -4,7 +4,7 @@ from flight_search import FlightSearch
 from notification_manager import NotificationManager
 
 
-ORIGIN_CITY_IATA = "LON"
+ORIGIN_CITY_IATA = "GDL"
 
 data_manager = DataManager()
 flight_search = FlightSearch()
@@ -39,7 +39,7 @@ for destination_code in destinations:
         continue
 
     if flight.price < destinations[destination_code]["price"]:
-        message = f"Low price alert! Only £{flight.price} to fly from {flight.origin_city}-{flight.origin_airport} to {flight.destination_city}-{flight.destination_airport}, from {flight.out_date} to {flight.return_date}."
+        message = f"Low price alert! Only ${flight.price} to fly from {flight.origin_city}-{flight.origin_airport} to {flight.destination_city}-{flight.destination_airport}, from {flight.out_date} to {flight.return_date}."
         link = flight.link
 
         ######################

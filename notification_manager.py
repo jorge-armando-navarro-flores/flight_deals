@@ -34,7 +34,6 @@ class NotificationManager:
         from_password = os.environ.get("FROM_PASSWORD")
         response = requests.get(SHEETY_USERS_ENDPOINT, headers=SHEETY_HEADERS)
         users = response.json()["users"]
-        pprint(users)
         for user in users:
             with smtplib.SMTP("smtp.gmail.com") as connection:
                 connection.starttls()
