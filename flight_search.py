@@ -1,5 +1,6 @@
 import os
 import requests
+from pprint import pprint
 from flight_data import FlightData
 TEQUILA_ENDPOINT = "https://tequila-api.kiwi.com"
 
@@ -46,6 +47,7 @@ class FlightSearch:
 
         try:
             data = response.json()["data"][0]
+            pprint(data)
         except IndexError:
 
             ##########################
@@ -65,6 +67,7 @@ class FlightSearch:
                     destination_airport=data["route"][1]["flyTo"],
                     out_date=data["route"][0]["local_departure"].split("T")[0],
                     return_date=data["route"][2]["local_departure"].split("T")[0],
+                    link=data["deep_link"],
                     stop_overs=1,
                     via_city=data["route"][0]["cityTo"]
                 )
@@ -80,7 +83,8 @@ class FlightSearch:
                 destination_city=data["route"][0]["cityTo"],
                 destination_airport=data["route"][0]["flyTo"],
                 out_date=data["route"][0]["local_departure"].split("T")[0],
-                return_date=data["route"][1]["local_departure"].split("T")[0]
+                return_date=data["route"][1]["local_departure"].split("T")[0],
+                link=data["deep_link"]
             )
 
             return flight_data

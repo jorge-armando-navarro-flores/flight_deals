@@ -29,9 +29,9 @@ class NotificationManager:
 
         print(message.status)
 
-    def send_emails(self, message):
-        from_email = "janf.tst@gmail.com"
-        from_password = "T3$71n9U$3r"
+    def send_emails(self, message, link):
+        from_email = os.environ.get("FROM_EMAIL")
+        from_password = os.environ.get("FROM_PASSWORD")
         response = requests.get(SHEETY_USERS_ENDPOINT, headers=SHEETY_HEADERS)
         users = response.json()["users"]
         pprint(users)
@@ -42,6 +42,6 @@ class NotificationManager:
                 connection.sendmail(
                     from_addr=from_email,
                     to_addrs=user["email"],
-                    msg=f"Subject:{message.encode('utf-8').strip()}!\n\nlink"
+                    msg=f"Subject:{message.encode('utf-8').strip()}!\n\n{link}"
                 )
 

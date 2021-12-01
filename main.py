@@ -40,6 +40,7 @@ for destination_code in destinations:
 
     if flight.price < destinations[destination_code]["price"]:
         message = f"Low price alert! Only £{flight.price} to fly from {flight.origin_city}-{flight.origin_airport} to {flight.destination_city}-{flight.destination_airport}, from {flight.out_date} to {flight.return_date}."
+        link = flight.link
 
         ######################
         if flight.stop_overs > 0:
@@ -48,4 +49,4 @@ for destination_code in destinations:
         #######################
 
         notification_manager.send_sms(message)
-        notification_manager.send_emails(message)
+        notification_manager.send_emails(message, link)
